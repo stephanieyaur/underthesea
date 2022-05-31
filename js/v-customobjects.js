@@ -319,7 +319,7 @@ Vue.component("obj-world", {
 
 		let grammar = new tracery.createGrammar(  {
 			waterActivity : " in the #water# with #creatureAdj# #creature#",
-			water: ["Florida Keys", "Bermuda Triangle", "Pacific", "Atlantic", "Mediterranean Sea>", "Bahamas", "Dead Sea", "bathtub", "pool", "Nile", "Gulf of Mexico"],
+			water: ["Florida Keys", "Bermuda Triangle", "Pacific", "Atlantic", "Mediterranean Sea", "Bahamas", "Dead Sea", "bathtub", "pool", "Nile", "Gulf of Mexico"],
 			activity: ["Swim", "Dive", "Snorkle", "Kayak", "Jet ski", "Canoe", "Sail", "Paddle", "Float", "Doggy paddle"],
 			creatureAdj : ["colorful", "rainbow", "tiny", "giant", "iridescent", "pink", "happy", "hyper", "beautiful", "majestic", "ethereal", "pudgy", "fresh", "shiny"],
 			creature : ["plankton", "sharks", "dolphins", "swordfish", "eels", "penguins", "beluga whales", "starfish", "seahorses", "stingrays", "carp", "fish", "mermaids", "pirates", "seagulls", "Nemo", "kraken", "octopii"],
