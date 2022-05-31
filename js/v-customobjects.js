@@ -154,42 +154,60 @@ Vue.component("obj-world", {
 	template: `
 	<a-entity>
 		<!--------- SKYBOX --------->
-		<a-sky color="lightblue"></a-sky>
+		<a-sky color="hsl(210,99%,60%)"></a-sky>
 
 		<a-plane 
-			roughness="1"
-			shadow 
-			color="hsl(140,40%,40%)"
+			color="hsl(200,90%,90%)"
 			height="100" 
 			width="100" 
 			rotation="-90 0 0">
 		</a-plane>
 
+		<a-sphere position="1 1.5 -2" radius="0.5" color="hsl(200,100%,100%)"></a-sphere>   
+
 		<!---- lights ----> 
 		<a-entity light="type: ambient; intensity: 0.4;" color="white"></a-entity>
 		<a-light type="directional" 
-			position="0 0 0" 
+			position="1 3 -2" 
 			rotation="-90 0 0" 
-			intensity="0.4"
+			intensity="1"
 			castShadow target="#directionaltarget">
 			<a-entity id="directionaltarget" position="-10 0 -20"></a-entity>
 		</a-light>
 
-		<a-cone 
+		<a-cylinder 
 			v-for="(tree,index) in trees"
-			:key="'tree' + index"
-			shadow 
+			:key="'tree' + index" 
 
-			:color="tree.color.toHex()"
-			:base-radius="tree.size.z" 
+			color="#ff634a"	
+			:base-radius="tree.size.z*index%10" 
 			:height="tree.size.y" 
 
 			segments-radial=10
 			segments-height=1
 			
 			:rotation="tree.rotation.toAFrame()"
-			:position="tree.position.toAFrame()">
-		</a-cone>
+			:position="tree.position.toAFrame()"
+			:openEnded=true
+			:thetaLength=180>
+		</a-cylinder>
+
+		<a-box
+			position="0 3 0" width="10" height="20" rotation="0 45 0" color="#4CC3D9"
+		</a-box>
+
+		// <!-- Curved surface -->
+		// <a-cylinder
+		// 	v-for="(tree,index) in trees"
+		// 	:key="'tree' + index"
+		// 	shadow
+		
+			:color="hsl(200,90%,90%)"
+
+		// 	openEnded= true
+		// 	thetaLength= 180"
+		// 	material="side: double">
+		// </a-cylinder>
 
 		
 
@@ -294,31 +312,28 @@ Vue.component("obj-world", {
 		// fire2.position.set(3, 0, -4)
 		// fire2.fireStrength = 7
 
-		
+
 		let grammar = new tracery.createGrammar(  {
-			songStyle : ", played as #song.a#, on #musicModifier# #instrument#",
-			instrument : ["ukulele", "vocals", "guitar", "clarinet", "piano", "harmonica", "sitar", "tabla", "harp", "dulcimer", "violin", "accordion", "concertina", "fiddle", "tamborine", "bagpipe", "harpsichord", "euphonium"],
-			musicModifier : ["heavy", "soft", "acoustic", "psychedelic", "light", "orchestral", "operatic", "distorted", "echoing", "melodic", "atonal", "arhythmic", "rhythmic", "electronic"],
-			musicGenre : ["metal", "electofunk", "jazz", "salsa", "klezmer", "zydeco", "blues", "mariachi", "flamenco", "pop", "rap", "soul", "gospel", "buegrass", "swing", "folk"],
-			musicPlays : ["echoes out", "reverberates", "rises", "plays"],
-			musicAdv : ["too quietly to hear", "into dissonance", "into a minor chord", "changing tempo", "to a major chord", "staccatto", "into harmony", "without warning", "briskly", "under the melody", "gently", "becoming #musicGenre#"],
-			song : ["melody", "dirge", "ballad", "poem", "beat poetry", "slam poetry", "spoken word performance", "hymn", "song", "tone poem", "symphony"],
-			musicAdj : ["yielding", "firm", "joyful", "catchy", "folksy", "harsh", "strong", "soaring", "rising", "falling", "fading", "frantic", "calm", "childlike", "rough", "sensual", "erotic", "frightened", "sorrowful", "gruff", "smooth"],
+			waterActivity : " in the #water# with #creatureAdj# #creature#",
+			water: ["Florida Keys", "Bermuda Triangle", "Pacific", "Atlantic", "Mediterranean Sea>", "Bahamas", "Dead Sea", "bathtub", "pool", "Nile", "Gulf of Mexico"],
+			activity: ["Swim", "Dive", "Snorkle", "Kayak", "Jet ski", "Canoe", "Sail", "Paddle", "Float", "Doggy paddle"],
+			creatureAdj : ["colorful", "rainbow", "tiny", "giant", "iridescent", "pink", "happy", "hyper", "beautiful", "majestic", "ethereal", "pudgy", "fresh", "shiny"],
+			creature : ["plankton", "sharks", "dolphins", "swordfish", "eels", "penguins", "beluga whales", "starfish", "seahorses", "stingrays", "carp", "fish", "mermaids", "pirates", "seagulls", "Nemo", "kraken", "octopii"],
         
 		}, {})
 		grammar.addModifiers(baseEngModifiers)
 
-		const campfireSongs = ["Lonely Goatherd", "On top of spaghetti", "Princess Pat", "BINGO", "Old Mac Donald", "Going on a Bear Hunt", "The Green Grass Grew All Around", "Home on the Range", "John Jacob Jingleheimer Schmitt", "The Wheels on the Bus", "If I had a Hammer"]
-		this.room.detailText = "Campfire time!"
+		const activity = ["Swim", "Dive", "Snorkle", "Kayak", "Jet ski", "Canoe", "Sail", "Paddle", "Float", "Doggy paddle"]
+		this.room.detailText = "Deep sea adventure time!"
 
 		this.room.time.onSecondChange((second) => {
 			// Change the song every minute (60 seconds)
 			let rate = 10 // How many seconds between changes
 			if (second%rate === 0) {
 				let tick = second/rate
-				let index = second % campfireSongs.length
-				let song = campfireSongs[index]
-				this.room.detailText =  song + grammar.flatten("#songStyle#")
+				let index = second % activity.length
+				let water = activity[index]
+				this.room.detailText =  water + grammar.flatten("#waterActivity#")
 			}
 		})
 	},

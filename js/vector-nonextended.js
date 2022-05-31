@@ -908,7 +908,8 @@
 				var hex = c.toString(16);
 				return hex.length == 1 ? "0" + hex : hex;
 			}
-
+			console.log("THIS IS THE TO HEX: ")
+			console.log("#" + componentToHex(rgb[0]) + componentToHex(rgb[1]) + componentToHex(rgb[2]))
 			return "#" + componentToHex(rgb[0]) + componentToHex(rgb[1]) + componentToHex(rgb[2]);
 		}
 

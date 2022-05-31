@@ -49,7 +49,7 @@ AFRAME.registerComponent('cheeseplate-behavior', {
 
 Vue.component("cheeseplate", {
 	template: `
-		<a-box color="blue" 
+		<a-box color="red" 
 			cheeseplate-behavior
 			depth="2" height="2" width="2"
 		>

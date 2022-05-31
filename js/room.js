@@ -11,7 +11,7 @@
 class Room {
 	constructor() {
 		
-		this.setID("test")
+		this.setID("Under The Sea")
 		
 		// Update loop runs regardless of roomID
 		// Initialize an update loop
