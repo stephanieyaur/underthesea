@@ -147,6 +147,14 @@ Vue.component("obj-fire", {
 
 })
 
+{/* <a-light type="directional" 
+			position="1 3 -2" 
+			rotation="-90 0 0" 
+			intensity="1"
+			castShadow target="#directionaltarget">
+			<a-entity id="directionaltarget" position="-10 0 -20"></a-entity>
+		</a-light> */}
+
 
 
 Vue.component("obj-world", {
@@ -167,10 +175,20 @@ Vue.component("obj-world", {
 
 		<!---- lights ----> 
 		<a-entity light="type: ambient; intensity: 0.4;" color="white"></a-entity>
+
 		<a-light type="directional" 
-			position="1 3 -2" 
+			position="10 -10 5" 
 			rotation="-90 0 0" 
-			intensity="1"
+			intensity="0.5"
+			castShadow target="#directionaltarget">
+			<a-entity id="directionaltarget" position="-10 0 -20"></a-entity>
+		</a-light>
+
+		<a-light type="ambient" 
+			color="blue"
+			position="0 30 5" 
+			rotation="-90 0 0" 
+			intensity="0.9"
 			castShadow target="#directionaltarget">
 			<a-entity id="directionaltarget" position="-10 0 -20"></a-entity>
 		</a-light>
@@ -195,20 +213,6 @@ Vue.component("obj-world", {
 		<a-box
 			position="0 3 0" width="10" height="20" rotation="0 45 0" color="#4CC3D9"
 		</a-box>
-
-		// <!-- Curved surface -->
-		// <a-cylinder
-		// 	v-for="(tree,index) in trees"
-		// 	:key="'tree' + index"
-		// 	shadow
-		
-			:color="hsl(200,90%,90%)"
-
-		// 	openEnded= true
-		// 	thetaLength= 180"
-		// 	material="side: double">
-		// </a-cylinder>
-
 		
 
 		<a-box 
