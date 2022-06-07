@@ -16,6 +16,15 @@ Vue.component("obj-head", {
 			<obj-axes scale=".1 .1 .1" v-if="false" />
 		</a-sphere>
 
+		<a-sphere 
+			shadow
+			:radius="headSize*0.5"
+			:color="obj.color.toHex()" 
+			position="0.3 0 0"
+			>
+			<obj-axes scale=".1 .1 .1" v-if="false" />
+		</a-sphere>
+
 		<a-cone v-for="(spike,index) in spikes"
 			:key="index"
 			:height="spike.size"
@@ -40,6 +49,20 @@ Vue.component("obj-head", {
 		>
 	
 		</a-cone>
+
+		<a-cone
+		
+			:height="headSize*.6"
+			:radius-bottom="headSize*.4"
+			position="0 0 0.18"
+			
+			:color="obj.color.toHex(.3)" 
+			
+		>
+
+		</a-cone>
+
+		
 	</a-entity>
 	`,
 	computed: {
@@ -250,6 +273,34 @@ Vue.component("obj-world", {
 			:rotation="rock.rotation.toAFrame()"
 			:position="rock.position.toAFrame()">
 		</a-box>
+
+		<!--      cloud  1 -->
+		<a-sphere position="0 0 -12" radius="1.75" color="#FC8FD6 "></a-sphere>
+		<a-sphere position="0 1 -10" radius="1.75" color="#EF2D5E"></a-sphere>
+		<a-sphere position="0 2 -12" radius="1.25" color="#FC8FD6 "></a-sphere>
+		<a-sphere position="-2 0 -10" radius="1.25" color="#FC8FD6 "></a-sphere>
+		<a-sphere position="-2 1 -12" radius="1.75" color="#FC8FD6 "></a-sphere>
+		<a-sphere position="-2 2 -10" radius="1.25" color="#FC8FD6 "></a-sphere>
+		<a-sphere position="3 -1.5 -10" radius="1.5" color="#EF2D5E"></a-sphere>
+		<a-sphere position="2 1 -12" radius="2.25" color="#FC8FD6 "></a-sphere>
+		<a-sphere position="2 2 -10" radius="1.25" color="#EF2D5E"></a-sphere>
+		<a-sphere position="-4 0 -12" radius="1.25" color="#AD6EEE "></a-sphere>
+		<a-sphere position="0 1 -12" radius="1.25" color="#FC8FD6 "></a-sphere>
+		<a-sphere position="4 2 -12" radius="2.25" color="#DD6EEE"></a-sphere>
+		
+		<!--      cloud   2-->
+		<a-sphere position="-8 6 -16" radius="1" color="#FC8FD6 "></a-sphere>
+		<a-sphere position="-9 7 -14" radius="1" color="#EF2D5E"></a-sphere>
+		<a-sphere position="-6 8 -16" radius="1" color="#FC8FD6 "></a-sphere>
+		<a-sphere position="-8 6 -14" radius="1.25" color="#FC8FD6 "></a-sphere>
+		<a-sphere position="-2 7 -16" radius="1.75" color="#FC8FD6 "></a-sphere>
+		<a-sphere position="-10 8 -14" radius="1" color="#FC8FD6 "></a-sphere>
+		<a-sphere position="-6 6 -14" radius="1.5" color="#EF2D5E"></a-sphere>
+		<a-sphere position="-11 7 -16" radius="1.5" color="#FC8FD6 "></a-sphere>
+		<a-sphere position="-11 4 -14" radius="1" color="#EF2D5E"></a-sphere>
+		<a-sphere position="-9 6 -16" radius="1.25" color="#AD6EEE "></a-sphere>
+		<a-sphere position="0 7 -16" radius="1.25" color="#FC8FD6 "></a-sphere>
+		<a-sphere position="-0.5 8 -16" radius="1" color="#DD6EEE"></a-sphere>
 
 	</a-entity>
 		`,
